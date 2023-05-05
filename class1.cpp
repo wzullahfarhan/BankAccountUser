@@ -153,7 +153,7 @@ int main(){
                     cout<<"Enter Transfer Amount: ";
                     cin>>tra;
                     b[m].Trans(tra);
-                    cout<<"Enter Receiver Account Number: "<<endl;
+                    cout<<"Enter Receiver Account Number: ";
                     cin>>re;
                     for (int o = 0; o < a; o++)
                     {
