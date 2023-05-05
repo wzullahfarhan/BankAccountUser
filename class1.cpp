@@ -4,13 +4,13 @@ class Account{
     private:
     string AccountName;
     int AccountNO;
-    float Balance;
+    double Balance;
     string AccountType;
     public:
     Account(){
         cout<<"User Details is Empty"<<endl;
     }
-    Account(string name,int no,float bal,string type){
+    Account(string name,int no,double bal,string type){
         AccountName=name;
         AccountNO=no;
         Balance=bal;
@@ -28,10 +28,10 @@ class Account{
     int GetNO(){
         return AccountNO;
     }
-    void SetBal(float bl){
+    void SetBal(double bl){
         Balance=bl;
     }
-    float GetBal(){
+    double GetBal(){
         return Balance;
     }
     void SetTy(string ty){
@@ -40,23 +40,23 @@ class Account{
     string GetTy(){
         return AccountType;
     }
-    void SetDeposite(int balance){
+    void SetDeposite(double balance){
         Balance+=balance;
     }
-    void SetWithdrow(int bala){
+    void SetWithdrow(double bala){
         Balance-=bala;
     }
-    void Transfer(int trans,int receive){
-        Balance-=trans;
-        Balance+=receive;
+    void Transfer(int receiId,double am){
+        AccountNO=receiId;
+        Balance+=am;
     }
-    void Trans(int a){
+    void Trans(double a){
         Balance -=a;
     }
-    void Recie(int b){
+    void Recie(double b){
         Balance +=b;
     }
-    float Mainbal(){
+    double Mainbal(){
         return Balance;
     }
     void ShowAllinfo(){
@@ -79,8 +79,8 @@ int main(){
     Account b[a];
     string name,type;
     int no;
-    float bal;
-    int AcNo,tra,Re;
+    double bal;
+    int AcNo;
     for (i = 0; i < a; i++)
     {
         cout<<"Enter "<<1+i<<" Account Name: ";
@@ -98,7 +98,7 @@ int main(){
         cout<<endl;
     }
     char ch;
-    int e,f,g=1;
+    double e,f;
     cout<<"Do you want to Deposite or Withdrow For any user???\n"<<endl;
     cout<<"If   'YES' 'Press' == y "<<endl;
     cout<<"If   'NO' 'Press' == n "<<endl;
@@ -114,12 +114,12 @@ int main(){
             cin>>d;
             cout<<"\t\t Deposite ammount is: ";
             cin>>e;
-            if(0<= b[d-g].Mainbal()){
+            if(0<= b[d-1].Mainbal()){
             cout<<"\t\t Withdrow Ammount is: ";
             cin>>f;
             }
-            b[d-g].SetDeposite(e);
-            b[d-g].SetWithdrow(f);
+            b[d-1].SetDeposite(e);
+            b[d-1].SetWithdrow(f);
             cout<<"Welcome to our Family"<<endl;
             cout<<endl;
         }
@@ -133,6 +133,52 @@ int main(){
     }
     cout<<endl;
     cout<<endl;
+
+    char ta;
+    double tra,re;
+    cout<<"\t\tDo you Want yo Transfer Or Receive Money???\n"<<endl;
+    cout<<"If   'YES' 'Press' == y "<<endl;
+    cout<<"If   'NO' 'Press' == n "<<endl;
+    cout<<"' -------- ' = ";
+    cin>>ta;
+        
+        if (ta=='y')
+        {
+            cout<<"Enter Account Number: ";
+            cin>>AcNo;
+                
+                for (int m = 0; m < a; m++)
+                {
+                    if (AcNo==b[m].GetNO()){
+                    cout<<"Enter Transfer Amount: ";
+                    cin>>tra;
+                    b[m].Trans(tra);
+                    cout<<"Enter Receiver Account Number: "<<endl;
+                    cin>>re;
+                    for (int o = 0; o < a; o++)
+                    {
+                        if (re==b[o].GetNO())
+                        {
+                            b[o].Transfer(b[o].GetNO(),tra);
+                        }
+                    }
+                    break;
+                    }
+                    continue;
+                        cout<<"User Input error"<<endl;
+                        
+                }
+        }
+        else if (ta=='n')
+        {
+            cout<<"Thanks For Using Our Bank Account"<<endl;
+            
+        }
+        else
+        {
+            cout<<"----User Input Error----"<<endl;
+            cout<<"--Thank you--"<<endl;
+        }
 
     for (int k = 0; k < a; k++)
     {
