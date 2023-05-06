@@ -150,7 +150,7 @@ int main(){
                 for (int m = 0; m < a; m++)
                 {
                     if (AcNo==b[m].GetNO()){
-                    cout<<"Enter Transfer Amount: ";
+                    cout<<"Enter Transfer Amount Number: ";
                     cin>>tra;
                     b[m].Trans(tra);
                     cout<<"Enter Receiver Account Number: ";
