@@ -144,13 +144,13 @@ int main(){
         
         if (ta=='y')
         {
-            cout<<"Enter Account Number: ";
+            cout<<"Enter Transfer Account Number: ";
             cin>>AcNo;
                 
                 for (int m = 0; m < a; m++)
                 {
                     if (AcNo==b[m].GetNO()){
-                    cout<<"Enter Transfer Amount Number: ";
+                    cout<<"Enter Amount : ";
                     cin>>tra;
                     b[m].Trans(tra);
                     cout<<"Enter Receiver Account Number: ";
